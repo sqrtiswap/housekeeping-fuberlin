@@ -17,8 +17,12 @@
 AGKOCHDIR=${AGKOCHDIR:-${HOME}/Cloud/fubox/AG\ Koch/}
 FUBOXDIR=${FUBOXDIR:-${HOME}/Cloud/fubox/}
 
+_fail='\033[31m' # red
+_good='\033[32m' # green
+_rset='\033[0m'  # reset colour
+
 find_weird() {
-	printf "\n===> Files & directories containing weird characters:\n"
+	printf "===> Files & directories containing weird characters:\n"
 	find "${AGKOCHDIR}" \
 		-iname '* *' \
 		-o -iname '*ö*' \
@@ -32,17 +36,21 @@ find_weird() {
 		-o -iname '*\}*' \
 		-o -iname '*\&*' \
 		-o -iname '*ß*' \
-		| awk -v rootdir="${FUBOXDIR}/" '{ gsub(rootdir, "", $0); print $0 }'
+		| awk -v rootdir="${FUBOXDIR}/" -v found="${_fail}" -v reset="${_rset}" '{ gsub(rootdir, "", $0); print found$0reset }'
 
-	printf "\n===> Readme.md files and their contents\n"
-	IFS='
-	'
 	_readmefiles=$(find "${AGKOCHDIR}" -name 'Readme.md')
-	for f in ${_readmefiles}
-	do
-		printf "\n\033[31m---> %s\033[0m" "$f"
-		printf "\n---> %s\n" "$(cat $f)"
-	done
+	printf "\n===> Readme.md files and their contents:\n"
+	if [ -n "${_readmefiles}" ] ; then
+		IFS='
+		'
+		for f in ${_readmefiles}
+		do
+			printf "\n${_fail}---> %s${_rset}" "$f"
+			printf "\n---> %s\n" "$(cat $f)"
+		done
+	else
+		printf "${_good}No Readme.md found.${_rset}\n"
+	fi
 }
 
 find_weird
