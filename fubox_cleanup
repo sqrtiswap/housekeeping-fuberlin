@@ -1,11 +1,11 @@
 #!/bin/sh
 
-_agkochdir="$HOME"/Cloud/fubox/AG\ Koch
-_fuboxdir="$HOME"/Cloud/fubox
+AGKOCHDIR=${AGKOCHDIR:-${HOME}/Cloud/fubox/AG\ Koch/}
+FUBOXDIR=${FUBOXDIR:-${HOME}/Cloud/fubox/}
 
 find_weird() {
 	printf "\n===> Files & directories containing weird characters:\n"
-	find "${_agkochdir}" \
+	find "${AGKOCHDIR}" \
 		-iname '* *' \
 		-o -iname '*ö*' \
 		-o -iname '*ä*' \
@@ -18,12 +18,12 @@ find_weird() {
 		-o -iname '*\}*' \
 		-o -iname '*\&*' \
 		-o -iname '*ß*' \
-		| awk -v rootdir="${_fuboxdir}/" '{ gsub(rootdir, "", $0); print $0 }'
+		| awk -v rootdir="${FUBOXDIR}/" '{ gsub(rootdir, "", $0); print $0 }'
 
 	printf "\n===> Readme.md files and their contents\n"
 	IFS='
 	'
-	_readmefiles=$(find "${_agkochdir}" -name 'Readme.md')
+	_readmefiles=$(find "${AGKOCHDIR}" -name 'Readme.md')
 	for f in ${_readmefiles}
 	do
 		printf "\n\033[31m---> %s\033[0m" "$f"
