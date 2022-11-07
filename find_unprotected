@@ -1,0 +1,14 @@
+#!/bin/sh
+
+find_unprotected() {
+	echo "
+	===> Unprotected home directories:"
+	echo "---> group screwable:"
+	ls -lA /home/ | grep -e '^drwxr' -e '^drwx.w'
+	echo "---> globally screwable:"
+	ls -lA /home/ | grep -e '^drwx...r' -e '^drwx....w'
+}
+
+if [ "$(dnsdomainname)" = "physik.fu-berlin.de" ] ; then
+	find_unprotected
+fi
