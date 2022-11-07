@@ -6,4 +6,7 @@ install:
 	mkdir -p ~/bin/
 	cp -f fubox_cleanup ~/bin/fubox_cleanup
 
-.PHONY: all install
+uninstall:
+	rm ~/bin/fubox_cleanup
+
+.PHONY: all install uninstall
