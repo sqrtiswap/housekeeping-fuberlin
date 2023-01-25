@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Copyright (c) 2022 Alexander Möller <alexander.moeller@fu-berlin.de>
+# Copyright (c) 2022-2023 Alexander Möller <alexander.moeller@fu-berlin.de>
 #
 # Permission to use, copy, modify, and distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -14,7 +14,7 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-AGKOCHDIR=${AGKOCHDIR:-${HOME}/Cloud/fubox/AG\ Koch}
+AGKOCHDIR=${AGKOCHDIR:-${HOME}/Cloud/fubox/AGKoch}
 FUBOXDIR=${FUBOXDIR:-${HOME}/Cloud/fubox}
 
 _fail='\033[31m' # red
