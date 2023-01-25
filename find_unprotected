@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Copyright (c) 2022 Alexander Möller <alexander.moeller@fu-berlin.de>
+# Copyright (c) 2022-2023 Alexander Möller <alexander.moeller@fu-berlin.de>
 #
 # Permission to use, copy, modify, and distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -14,12 +14,14 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
+_fail='\033[31m' # red
+_rset='\033[0m'  # reset colour
+
 find_unprotected() {
-	echo "
-	===> Unprotected home directories:"
-	echo "---> group screwable:"
+	printf "${_fail}===> Unprotected home directories:${_rset}\n"
+	printf "${_fail}---> group screwable:${_rset}\n"
 	ls -lA /home/ | grep -e '^drwxr' -e '^drwx.w'
-	echo "---> globally screwable:"
+	printf "${_fail}---> globally screwable:${_rset}\n"
 	ls -lA /home/ | grep -e '^drwx...r' -e '^drwx....w'
 }
 
