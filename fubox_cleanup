@@ -36,6 +36,7 @@ find_weird() {
 		-o -iname '*\}*' \
 		-o -iname '*\&*' \
 		-o -iname '*ß*' \
+		| grep -v "^${AGKOCHDIR}$" \
 		| awk -v rootdir="${FUBOXDIR}/" -v found="${_fail}" -v reset="${_rset}" '{ gsub(rootdir, "", $0); print found$0reset }'
 
 	_readmefiles=$(find "${AGKOCHDIR}" -name 'Readme.md')
