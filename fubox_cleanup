@@ -38,7 +38,9 @@ find_undesirable_characters() {
 		-o -iname '*ß*' \
 		| grep -v "^${AGKOCHDIR}$" \
 		| awk -v rootdir="${FUBOXDIR}/" -v found="${_fail}" -v reset="${_rset}" '{ gsub(rootdir, "", $0); print found$0reset }'
+}
 
+find_empty_readmes() {
 	_readmefiles=$(find "${AGKOCHDIR}" -name 'Readme.md')
 	printf "\n===> Readme.md files and their contents:\n"
 	if [ -n "${_readmefiles}" ] ; then
@@ -55,3 +57,4 @@ find_undesirable_characters() {
 }
 
 find_undesirable_characters
+find_empty_readmes
