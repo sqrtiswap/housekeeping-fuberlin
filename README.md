@@ -11,7 +11,7 @@ Check for files & directories that have undesirable characters in them. This inc
 
 Clicking on the area above the file/directory list in the Nextcloud web client creates an empty Readme.md without much of a notification. Therefore also check if there are any of these files.
 
-`dir_cleanup` by default will run on `AGKOCHDIR`. When not otherwise specified the assumend path for that is `$HOME/Cloud/fubox/AG\ Koch`. But it is also possible to run the script on a directory provided as an argument:
+`dir_cleanup` by default will run on `AGKOCHDIR`. When not otherwise specified the assumed path for that is `$HOME/Cloud/fubox/AG\ Koch`. But it is also possible to run the script on a directory provided as an argument:
 
 ```shell
 $ dir_cleanup /path/to/some/directory
