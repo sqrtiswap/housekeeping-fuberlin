@@ -1,12 +1,14 @@
 # Housekeeping
 
-## find_open
+## Tools
 
-Based on some home directories having had insecure permissions before look for them in order to notify ZEDV.
+### find_open
+
+Based on some home directories having had insecure permissions before, look for them in order to notify ZEDV.
 
 `find_open` will usually only run on boxes at the physics department. You may force it everywhere else with `find_open -f`.
 
-## dir_cleanup
+### dir_cleanup
 Check for files & directories that have undesirable characters in them. This includes spaces, braces, umlauts, etc.
 
 Clicking on the area above the file/directory list in the Nextcloud web client creates an empty Readme.md without much of a notification. Therefore also check if there are any of these files.
@@ -18,9 +20,6 @@ $ dir_cleanup /path/to/some/directory
 ```
 
 Another environment variable is `FUBOXDIR` which is used to shorten the path when running the script on the FUB Nextcloud. The assumed path is `$HOME/Cloud/fubox/`.
-
-## Contributing
-Merge requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 [ISC](https://opensource.org/licenses/ISC)
