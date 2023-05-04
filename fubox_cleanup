@@ -21,7 +21,7 @@ _fail='\033[31m' # red
 _good='\033[32m' # green
 _rset='\033[0m'  # reset colour
 
-find_weird() {
+find_undesirable_characters() {
 	printf "===> Files & directories containing weird characters:\n"
 	find "${AGKOCHDIR}" \
 		-iname '* *' \
@@ -54,4 +54,4 @@ find_weird() {
 	fi
 }
 
-find_weird
+find_undesirable_characters
