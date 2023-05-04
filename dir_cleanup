@@ -46,7 +46,7 @@ find_undesirable_characters() {
 		| grep -v "^${AGKOCHDIR}$" \
 		| awk -v found="${_fail}" -v reset="${_rset}" \
 		-v fuboxdir="${FUBOXDIR}/" -v cdir="${_cleanupdir}" -v agkochdir="${AGKOCHDIR}" \
-		'{ if(cdir==agkochdir || cdir==rootdir){gsub(fuboxdir, "", $0)}; print found$0reset }'
+		'{ if(cdir==agkochdir || cdir==rootdir){gsub(fuboxdir, "", $0)}; gsub("//", "/", $0); print found$0reset }'
 }
 
 find_empty_readmes() {
