@@ -42,14 +42,18 @@ find_undesirable_characters() {
 
 find_empty_readmes() {
 	_readmefiles=$(find "${AGKOCHDIR}" -name 'Readme.md')
-	printf "\n===> Readme.md files and their contents:\n"
+	printf "\n===> Empty Readme.md files:\n"
 	if [ -n "${_readmefiles}" ] ; then
 		IFS='
 		'
 		for f in ${_readmefiles}
 		do
-			printf "\n${_fail}---> %s${_rset}" "$f"
-			printf "\n---> %s\n" "$(cat $f)"
+			_content=$(wc < "$f" | awk '{ print $3 $2 $1 }')
+			if [ "${_content}" -eq 100 ] ; then
+				printf "${_fail}---> %s${_rset}\n" "$f"
+			else
+				printf "---> Non-empty Readme found: %s\n" "$f"
+			fi
 		done
 	else
 		printf "${_good}No Readme.md found.${_rset}\n"
