@@ -14,7 +14,7 @@ Clicking on the area above the file/directory list in the Nextcloud web client c
 `dir_cleanup` by default will run on `AGKOCHDIR`. When not otherwise specified the assumend path for that is `$HOME/Cloud/fubox/AG\ Koch`. But it is also possible to run the script on a directory provided as an argument:
 
 ```shell
-dir_cleanup /path/to/some/directory
+$ dir_cleanup /path/to/some/directory
 ```
 
 Another environment variable is `FUBOXDIR` which is used to shorten the path when running the script on the FUB Nextcloud. The assumed path is `$HOME/Cloud/fubox/`.
