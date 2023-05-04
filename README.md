@@ -4,17 +4,23 @@
 
 Based on some home directories having had insecure permissions before look for them in order to notify ZEDV.
 
+`find_open` will usually only run on boxes at the physics department. You may force it everywhere else with `find_open -f`.
+
 ## fubox_cleanup
-Check for files & directories in the fubox that have undesirable characters in them. This includes spaces, braces, umlauts, etc.
+Check for files & directories that have undesirable characters in them. This includes spaces, braces, umlauts, etc.
 
-Clicking on the area above the file/directory list in the web client creates an empty Readme.md without much of a notification. Therefore also check if there are any of these files.
+Clicking on the area above the file/directory list in the Nextcloud web client creates an empty Readme.md without much of a notification. Therefore also check if there are any of these files.
 
-Unless you specify different locations via the environment variables `AGKOCHDIR` and `FUBOXDIR` the assumed paths are `$HOME/Cloud/fubox/AG\ Koch` and `$HOME/Cloud/fubox/` respectively.
+`fubox_cleanup` by default will run on `AGKOCHDIR`. When not otherwise specified the assumend path for that is `$HOME/Cloud/fubox/AG\ Koch`. But it is also possible to run the script on a directory provided as an argument:
+
+```shell
+fubox_cleanup /path/to/some/directory
+```
+
+Another environment variable is `FUBOXDIR` which is used to shorten the path when running the script on the FUB Nextcloud. The assumed path is `$HOME/Cloud/fubox/`.
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+Merge requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 [ISC](https://opensource.org/licenses/ISC)
