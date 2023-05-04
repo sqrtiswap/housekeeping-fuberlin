@@ -26,8 +26,8 @@ elif [ "${_os}" = "Darwin" ] ; then
 	_top="Users"
 fi
 
-find_unprotected() {
-	printf "${_fail}===> Unprotected home directories:${_rset}\n"
+find_open() {
+	printf "${_fail}===> Partially open home directories:${_rset}\n"
 	printf "${_fail}---> group readable:${_rset}\n"
 	ls -lA /"${_top}"/ | grep '^drwxr'
 	printf "${_fail}---> group writeable:${_rset}\n"
@@ -54,9 +54,9 @@ done
 shift $((OPTIND - 1))
 
 if [ "${_force}" -eq 1 ] ; then
-	find_unprotected
+	find_open
 elif [ "$(dnsdomainname)" = "physik.fu-berlin.de" ] ; then
-	find_unprotected
+	find_open
 else
 	printf "You\'re outside the FUB-Physik network. You may force with -f\n"
 	exit 1

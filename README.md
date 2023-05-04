@@ -1,6 +1,6 @@
 # Housekeeping
 
-## find_unprotected
+## find_open
 
 Based on some home directories having had insecure permissions before look for them in order to notify ZEDV.
 
