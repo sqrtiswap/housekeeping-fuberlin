@@ -21,9 +21,16 @@ _fail='\033[31m' # red
 _good='\033[32m' # green
 _rset='\033[0m'  # reset colour
 
+if [ -n "$1" ] ; then
+	_cleanupdir="$1"
+else
+	_cleanupdir="$AGKOCHDIR"
+	printf "Defaulting to AGKOCHDIR=%s\n\n" "${_cleanupdir}"
+fi
+
 find_undesirable_characters() {
 	printf "===> Files & directories containing weird characters:\n"
-	find "${AGKOCHDIR}" \
+	find "${_cleanupdir}" \
 		-iname '* *' \
 		-o -iname '*ö*' \
 		-o -iname '*ä*' \
@@ -41,7 +48,7 @@ find_undesirable_characters() {
 }
 
 find_empty_readmes() {
-	_readmefiles=$(find "${AGKOCHDIR}" -name 'Readme.md')
+	_readmefiles=$(find "${_cleanupdir}" -name 'Readme.md')
 	printf "\n===> Empty Readme.md files:\n"
 	if [ -n "${_readmefiles}" ] ; then
 		IFS='
@@ -60,5 +67,5 @@ find_empty_readmes() {
 	fi
 }
 
-find_undesirable_characters
-find_empty_readmes
+find_undesirable_characters "$@"
+find_empty_readmes "$@"
