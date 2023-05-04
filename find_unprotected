@@ -19,16 +19,23 @@ _rset='\033[0m'  # reset colour
 
 _force=0
 
+_os=$(uname -s)
+if [ "${_os}" = "Linux" ] ; then
+	_top="home"
+elif [ "${_os}" = "Darwin" ] ; then
+	_top="Users"
+fi
+
 find_unprotected() {
 	printf "${_fail}===> Unprotected home directories:${_rset}\n"
 	printf "${_fail}---> group readable:${_rset}\n"
-	ls -lA /home/ | grep '^drwxr'
+	ls -lA /"${_top}"/ | grep '^drwxr'
 	printf "${_fail}---> group writeable:${_rset}\n"
-	ls -lA /home/ | grep '^drwx.w'
+	ls -lA /"${_top}"/ | grep '^drwx.w'
 	printf "${_fail}---> globally readable:${_rset}\n"
-	ls -lA /home/ | grep '^drwx....w'
+	ls -lA /"${_top}"/ | grep '^drwx....w'
 	printf "${_fail}---> globally writeable:${_rset}\n"
-	ls -lA /home/ | grep '^drwx....w'
+	ls -lA /"${_top}"/ | grep '^drwx....w'
 }
 
 usage() { cat << USAGE
