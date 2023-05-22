@@ -35,8 +35,6 @@ prepend-path MANPATH $debugger/documentation/man
 prepend-path MANPATH $intelhome/itac/2021.6.0/man
 prepend-path MANPATH $intelhome/mpi/2021.6.0/man
 prepend-path INTEL_LICENSE_FILE /Users/Shared/Library/Application Support/Intel/Licenses
-prepend-path INTEL_LICENSE_FILE $userhome/intel/licenses
-prepend-path INTEL_LICENSE_FILE /opt/intel/licenses
 prepend-path INTEL_LICENSE_FILE $intelhome/clck/2021.6.0/licensing
 prepend-path INTEL_LICENSE_FILE $userhome/intel/licenses
 prepend-path INTEL_LICENSE_FILE /opt/intel/licenses
@@ -48,7 +46,6 @@ prepend-path LIBRARY_PATH $compiler/linux/lib
 prepend-path LIBRARY_PATH $compiler/linux/compiler/lib/intel64_lin
 prepend-path LIBRARY_PATH $intelhome/dal/2021.6.0/lib/intel64
 prepend-path LIBRARY_PATH $intelhome/dnnl/2022.1.0/cpu_dpcpp_gpu_dpcpp/lib
-prepend-path LIBRARY_PATH $intelhome/ipp/2021.6.0/lib/intel64
 prepend-path LIBRARY_PATH $intelhome/ippcp/2021.6.0/lib/intel64
 prepend-path LIBRARY_PATH $intelhome/ipp/2021.6.0/lib/intel64
 prepend-path LIBRARY_PATH $intelhome/mkl/2022.1.0/lib/intel64
@@ -67,7 +64,6 @@ prepend-path LD_LIBRARY_PATH $debugger/dep/lib
 prepend-path LD_LIBRARY_PATH $debugger/libipt/intel64/lib
 prepend-path LD_LIBRARY_PATH $debugger/gdb/intel64/lib
 prepend-path LD_LIBRARY_PATH $intelhome/dnnl/2022.1.0/cpu_dpcpp_gpu_dpcpp/lib
-prepend-path LD_LIBRARY_PATH $intelhome/ipp/2021.6.0/lib/intel64
 prepend-path LD_LIBRARY_PATH $intelhome/ippcp/2021.6.0/lib/intel64
 prepend-path LD_LIBRARY_PATH $intelhome/ipp/2021.6.0/lib/intel64
 prepend-path LD_LIBRARY_PATH $intelhome/itac/2021.6.0/slib
@@ -83,7 +79,6 @@ prepend-path CPATH $intelhome/dev-utilities/2021.6.0/include
 prepend-path CPATH $intelhome/dnnl/2022.1.0/cpu_dpcpp_gpu_dpcpp/include
 prepend-path CPATH $intelhome/dpcpp-ct/2022.1.0/include
 prepend-path CPATH $intelhome/dpl/2021.7.0/linux/include
-prepend-path CPATH $intelhome/ipp/2021.6.0/include
 prepend-path CPATH $intelhome/ippcp/2021.6.0/include
 prepend-path CPATH $intelhome/ipp/2021.6.0/include
 prepend-path CPATH $intelhome/mkl/2022.1.0/include
