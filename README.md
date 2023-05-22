@@ -43,7 +43,7 @@ make install-module
 In either case add the following line to your `~/.bashrc`:
 
 ```shell
-export MODULEPATH:$MODULEPATH:~/.modules
+export MODULEPATH=$MODULEPATH:~/.modules
 ```
 
 This makes the ifort modulefile available for simple use with `module` `avail`/`load`/`unload`/`list`/etc.
