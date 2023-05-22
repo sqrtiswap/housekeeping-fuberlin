@@ -22,7 +22,7 @@ proc ModulesHelp { } {
     puts stderr "\tTested to work for ifort"
 }
 
-module-whatis "Initialize Intel oneAPI"
+module-whatis "Initialise Intel oneAPI"
 
 # set some abbreviations
 set intelhome /net/opt/intel-oneapi
@@ -218,5 +218,5 @@ if { [ module-info mode load ] } {
 }
 
 if { [ module-info mode remove ] } {
-    puts stderr "Removing Intel OneAPI from environment"
+    puts stderr "Removing Intel OneAPI tools from environment"
 }
