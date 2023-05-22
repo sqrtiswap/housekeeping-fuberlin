@@ -1,184 +1,222 @@
-#%Module1.0#######################################################################
+#%Module -*- tcl -*-
+##
 ## modulefile for intel compiler
-#
-# Copyright (c) 2023 Alexander Möller <alexander.moeller@fu-berlin.de>
-#
-# Permission to use, copy, modify, and distribute this software for any
-# purpose with or without fee is hereby granted, provided that the above
-# copyright notice and this permission notice appear in all copies.
-#
-# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+##
+## Copyright (c) 2023 Alexander Möller <alexander.moeller@fu-berlin.de>
+##
+## Permission to use, copy, modify, and distribute this software for any
+## purpose with or without fee is hereby granted, provided that the above
+## copyright notice and this permission notice appear in all copies.
+##
+## THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+## WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+## MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+## ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+## WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+## ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+## OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 proc ModulesHelp { } {
-    global version
-    puts stderr "\tThis module sets paths for Intel oneAPI"
+    #global version
+    puts stderr "Set paths and shell variables for Intel oneAPI"
+    puts stderr "\tTested to work for ifort"
 }
 
 module-whatis "Initialize Intel oneAPI"
 
 # set some abbreviations
 set intelhome /net/opt/intel-oneapi
-set compiler $intelhome/compiler/2022.1.0
-set debugger $intelhome/debugger/2021.6.0
-set userhome $::env(HOME)
+set userhome  $::env(HOME)
 
-setenv MKLROOT $intelhome/mkl/2022.1.0
-prepend-path MANPATH $intelhome/clck/2021.6.0/man
-prepend-path MANPATH $compiler/documentation/en/man/common
-prepend-path MANPATH $debugger/documentation/man
-prepend-path MANPATH $intelhome/itac/2021.6.0/man
-prepend-path MANPATH $intelhome/mpi/2021.6.0/man
-prepend-path INTEL_LICENSE_FILE /Users/Shared/Library/Application Support/Intel/Licenses
-prepend-path INTEL_LICENSE_FILE $intelhome/clck/2021.6.0/licensing
-prepend-path INTEL_LICENSE_FILE $userhome/intel/licenses
-prepend-path INTEL_LICENSE_FILE /opt/intel/licenses
-setenv IPPROOT $intelhome/ipp/2021.6.0
-setenv IPP_TARGET_ARCH intel64
-prepend-path LIBRARY_PATH $intelhome/ccl/2021.6.0/lib/cpu_gpu_dpcpp
-prepend-path LIBRARY_PATH $intelhome/clck/2021.6.0/lib/intel64
-prepend-path LIBRARY_PATH $compiler/linux/lib
-prepend-path LIBRARY_PATH $compiler/linux/compiler/lib/intel64_lin
-prepend-path LIBRARY_PATH $intelhome/dal/2021.6.0/lib/intel64
-prepend-path LIBRARY_PATH $intelhome/dnnl/2022.1.0/cpu_dpcpp_gpu_dpcpp/lib
-prepend-path LIBRARY_PATH $intelhome/ippcp/2021.6.0/lib/intel64
-prepend-path LIBRARY_PATH $intelhome/ipp/2021.6.0/lib/intel64
-prepend-path LIBRARY_PATH $intelhome/mkl/2022.1.0/lib/intel64
-prepend-path LIBRARY_PATH $intelhome/mpi/2021.6.0//lib
-prepend-path LIBRARY_PATH $intelhome/mpi/2021.6.0//lib/release
-prepend-path LIBRARY_PATH $intelhome/mpi/2021.6.0//libfabric/lib
-prepend-path LIBRARY_PATH $intelhome/tbb/2021.6.0/env/../lib/intel64/gcc4.8
-prepend-path LIBRARY_PATH $intelhome/vpl/2022.1.0/lib
-prepend-path LD_LIBRARY_PATH $intelhome/ccl/2021.6.0/lib/cpu_gpu_dpcpp
-prepend-path LD_LIBRARY_PATH $compiler/linux/compiler/lib/intel64_lin
-prepend-path LD_LIBRARY_PATH $compiler/linux/lib/oclfpga/host/linux64/lib
-prepend-path LD_LIBRARY_PATH $compiler/linux/lib/x64
-prepend-path LD_LIBRARY_PATH $compiler/linux/lib
-prepend-path LD_LIBRARY_PATH $intelhome/dal/2021.6.0/lib/intel64
-prepend-path LD_LIBRARY_PATH $debugger/dep/lib
-prepend-path LD_LIBRARY_PATH $debugger/libipt/intel64/lib
-prepend-path LD_LIBRARY_PATH $debugger/gdb/intel64/lib
-prepend-path LD_LIBRARY_PATH $intelhome/dnnl/2022.1.0/cpu_dpcpp_gpu_dpcpp/lib
-prepend-path LD_LIBRARY_PATH $intelhome/ippcp/2021.6.0/lib/intel64
-prepend-path LD_LIBRARY_PATH $intelhome/ipp/2021.6.0/lib/intel64
-prepend-path LD_LIBRARY_PATH $intelhome/itac/2021.6.0/slib
-prepend-path LD_LIBRARY_PATH $intelhome/mkl/2022.1.0/lib/intel64
-prepend-path LD_LIBRARY_PATH $intelhome/mpi/2021.6.0//lib
-prepend-path LD_LIBRARY_PATH $intelhome/mpi/2021.6.0//lib/release
-prepend-path LD_LIBRARY_PATH $intelhome/mpi/2021.6.0//libfabric/lib
-prepend-path LD_LIBRARY_PATH $intelhome/tbb/2021.6.0/env/../lib/intel64/gcc4.8
-prepend-path LD_LIBRARY_PATH $intelhome/vpl/2022.1.0/lib
-prepend-path CPATH $intelhome/ccl/2021.6.0/include/cpu_gpu_dpcpp
-prepend-path CPATH $intelhome/dal/2021.6.0/include
-prepend-path CPATH $intelhome/dev-utilities/2021.6.0/include
-prepend-path CPATH $intelhome/dnnl/2022.1.0/cpu_dpcpp_gpu_dpcpp/include
-prepend-path CPATH $intelhome/dpcpp-ct/2022.1.0/include
-prepend-path CPATH $intelhome/dpl/2021.7.0/linux/include
-prepend-path CPATH $intelhome/ippcp/2021.6.0/include
-prepend-path CPATH $intelhome/ipp/2021.6.0/include
-prepend-path CPATH $intelhome/mkl/2022.1.0/include
-prepend-path CPATH $intelhome/mpi/2021.6.0//include
-prepend-path CPATH $intelhome/tbb/2021.6.0/env/../include
-prepend-path CPATH $intelhome/vpl/2022.1.0/include
-prepend-path NLSPATH $compiler/linux/compiler/lib/intel64_lin/locale/%l_%t/%N
-prepend-path NLSPATH $intelhome/mkl/2022.1.0/lib/intel64/locale/%l_%t/%N
-prepend-path PATH $intelhome/advisor/2022.1.0/bin64
-prepend-path PATH $intelhome/clck/2021.6.0/bin/intel64
-prepend-path PATH $compiler/linux/bin
-prepend-path PATH $compiler/linux/bin/intel64
-prepend-path PATH $compiler/linux/lib/oclfpga/bin
-prepend-path PATH $debugger/gdb/intel64/bin
-prepend-path PATH $intelhome/dev-utilities/2021.6.0/bin
-prepend-path PATH $intelhome/dpcpp-ct/2022.1.0/bin
-prepend-path PATH $intelhome/inspector/2022.1.0/bin64
-prepend-path PATH $intelhome/intelpython/latest/condabin
-prepend-path PATH $intelhome/intelpython/latest/bin
-prepend-path PATH $intelhome/itac/2021.6.0/bin
-prepend-path PATH $intelhome/mkl/2022.1.0/bin/intel64
-prepend-path PATH $intelhome/mpi/2021.6.0//bin
-prepend-path PATH $intelhome/mpi/2021.6.0//libfabric/bin
-prepend-path PATH $intelhome/vpl/2022.1.0/bin
-prepend-path PATH $intelhome/vtune/2022.2.0/bin64
-setenv TBBROOT $intelhome/tbb/2021.6.0/env/..
-setenv DAALROOT $intelhome/dal/2021.6.0
-setenv DAL_MINOR_BINARY 1
-setenv DAL_MAJOR_BINARY 1
-setenv CLCK_ROOT $intelhome/clck/2021.6.0
-setenv CPLUS_INCLUDE_PATH $intelhome/clck/2021.6.0/include
-setenv VT_ROOT $intelhome/itac/2021.6.0
-setenv VT_SLIB_DIR $intelhome/itac/2021.6.0/slib
-setenv DALROOT $intelhome/dal/2021.6.0
-setenv ONEAPI_ROOT $intelhome
-setenv DPCT_BUNDLE_ROOT $intelhome/dpcpp-ct/2022.1.0
-setenv VTUNE_PROFILER_2022_DIR $intelhome/vtune/2022.2.0
-setenv VTUNE_PROFILER_DIR $intelhome/vtune/2022.2.0
-setenv INTEL_PYTHONHOME $debugger/dep
-setenv PYTHONPATH $intelhome/advisor/2022.1.0/pythonapi
-setenv CONDA_EXE $intelhome/intelpython/latest/bin/conda
-setenv CONDA_PREFIX $intelhome/intelpython/latest
-setenv CONDA_PROMPT_MODIFIER (intelpython-python3.9)
-setenv CONDA_DEFAULT_ENV intelpython-python3.9
-setenv CONDA_SHLVL 1
-setenv CONDA_PYTHON_EXE $intelhome/intelpython/latest/bin/python
-setenv VT_MPI impi4
-setenv ACL_BOARD_VENDOR_PATH /opt/Intel/OpenCLFPGA/oneAPI/Boards
-setenv FPGA_VARS_DIR $compiler/linux/lib/oclfpga
-setenv FPGA_VARS_ARGS ""
-setenv INTELFPGAOCLSDKROOT $compiler/linux/lib/oclfpga
-setenv IPPCP_TARGET_ARCH intel64
-setenv IPPCRYPTOROOT $intelhome/ippcp/2021.6.0
-prepend-path CLASSPATH $intelhome/dal/2021.6.0/lib/onedal.jar
-prepend-path CLASSPATH $intelhome/mpi/2021.6.0//lib/mpi.jar
-setenv INFOPATH $debugger/gdb/intel64/lib
-setenv CMPLR_ROOT $compiler
-setenv I_MPI_ROOT $intelhome/mpi/2021.6.0
-prepend-path PKG_CONFIG_PATH $intelhome/advisor/2022.1.0/include/pkgconfig/lib64
-prepend-path PKG_CONFIG_PATH $intelhome/ccl/2021.6.0/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH $compiler/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH $intelhome/dal/2021.6.0/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH $intelhome/dnnl/2022.1.0/cpu_dpcpp_gpu_dpcpp/../lib/pkgconfig
-prepend-path PKG_CONFIG_PATH $intelhome/dpl/2021.7.0/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH $intelhome/inspector/2022.1.0/include/pkgconfig/lib64
-prepend-path PKG_CONFIG_PATH $intelhome/ippcp/2021.6.0/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH $intelhome/mkl/2022.1.0/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH $intelhome/mpi/2021.6.0/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH $intelhome/tbb/2021.6.0/env/../lib/pkgconfig
-prepend-path PKG_CONFIG_PATH $intelhome/vpl/2022.1.0/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH $intelhome/vtune/2022.2.0/include/pkgconfig/lib64
-setenv _CE_M ""
-setenv _CE_CONDA ""
-setenv CCL_ROOT $intelhome/ccl/2021.6.0
-setenv CCL_CONFIGURATION cpu_gpu_dpcpp
-setenv DPL_ROOT $intelhome/dpl/2021.7.0
-setenv INSPECTOR_2022_DIR $intelhome/inspector/2022.1.0
-setenv GDB_INFO $debugger/documentation/info/
-setenv ADVISOR_2022_DIR $intelhome/advisor/2022.1.0
-setenv SETVARS_COMPLETED 1
-setenv APM $intelhome/advisor/2022.1.0/perfmodels
-prepend-path CMAKE_PREFIX_PATH $compiler/linux/IntelDPCPP
-prepend-path CMAKE_PREFIX_PATH $intelhome/dal/2021.6.0
-prepend-path CMAKE_PREFIX_PATH $intelhome/dnnl/2022.1.0/cpu_dpcpp_gpu_dpcpp/../lib/cmake
-prepend-path CMAKE_PREFIX_PATH $intelhome/tbb/2021.6.0/env/..
-prepend-path CMAKE_PREFIX_PATH $intelhome/vpl/2022.1.0
-prepend-path FI_PROVIDER_PATH /usr/lib64/libfabric
-prepend-path FI_PROVIDER_PATH $intelhome/mpi/2021.6.0//libfabric/lib/prov
-setenv DNNLROOT $intelhome/dnnl/2022.1.0/cpu_dpcpp_gpu_dpcpp
-prepend-path DIAGUTIL_PATH $intelhome/advisor/2022.1.0/sys_check/advisor_sys_check.py
-prepend-path DIAGUTIL_PATH $compiler/sys_check/sys_check.sh
-prepend-path DIAGUTIL_PATH $debugger/sys_check/debugger_sys_check.py
-prepend-path DIAGUTIL_PATH $intelhome/dpcpp-ct/2022.1.0/sys_check/sys_check.sh
-prepend-path DIAGUTIL_PATH $intelhome/vtune/2022.2.0/sys_check/vtune_sys_check.py
-prepend-path OCL_ICD_FILENAMES $compiler/linux/lib/x64/libintelocl.so
-prepend-path OCL_ICD_FILENAMES libalteracl.so
-prepend-path OCL_ICD_FILENAMES libintelocl_emu.so
-setenv VT_LIB_DIR $intelhome/itac/2021.6.0/lib
-prepend-path -d " " VT_ADD_LIBS -lpthread
-prepend-path -d " " VT_ADD_LIBS -lm
-prepend-path -d " " VT_ADD_LIBS -lvtunwind
-prepend-path -d " " VT_ADD_LIBS -lelf
-prepend-path -d " " VT_ADD_LIBS -ldwarf
+# version 2021.6.0
+set debugger   $intelhome/debugger/2021.6.0
+set clckdir    $intelhome/clck/2021.6.0
+set itacdir    $intelhome/itac/2021.6.0
+set mpidir     $intelhome/mpi/2021.6.0
+set ippdir     $intelhome/ipp/2021.6.0
+set ccldir     $intelhome/ccl/2021.6.0
+set daldir     $intelhome/dal/2021.6.0
+set ippcpdir   $intelhome/ippcp/2021.6.0
+set tbbdir     $intelhome/tbb/2021.6.0
+set devutildir $intelhome/dev-utilities/2021.6.0
+
+# version 2021.7.0
+set dpldir $intelhome/dpl/2021.7.0
+
+# version 2022.1.0
+set compiler     $intelhome/compiler/2022.1.0
+set mkldir       $intelhome/mkl/2022.1.0
+set dnnldir      $intelhome/dnnl/2022.1.0/cpu_dpcpp_gpu_dpcpp
+set vpldir       $intelhome/vpl/2022.1.0
+set dpcppctdir   $intelhome/dpcpp-ct/2022.1.0
+set advisordir   $intelhome/advisor/2022.1.0
+set inspectordir $intelhome/inspector/2022.1.0
+
+# version 2022.2.0
+set vtunedir $intelhome/vtune/2022.2.0
+
+# version latest
+set intelpythondir $intelhome/intelpython/latest
+
+setenv              MKLROOT                 $mkldir
+prepend-path        MANPATH                 $clckdir/man
+prepend-path        MANPATH                 $compiler/documentation/en/man/common
+prepend-path        MANPATH                 $debugger/documentation/man
+prepend-path        MANPATH                 $itacdir/man
+prepend-path        MANPATH                 $mpidir/man
+prepend-path        INTEL_LICENSE_FILE      /Users/Shared/Library/Application Support/Intel/Licenses
+prepend-path        INTEL_LICENSE_FILE      $clckdir/licensing
+prepend-path        INTEL_LICENSE_FILE      $userhome/intel/licenses
+prepend-path        INTEL_LICENSE_FILE      /opt/intel/licenses
+setenv              IPPROOT                 $ippdir
+setenv              IPP_TARGET_ARCH         intel64
+prepend-path        LIBRARY_PATH            $ccldir/lib/cpu_gpu_dpcpp
+prepend-path        LIBRARY_PATH            $clckdir/lib/intel64
+prepend-path        LIBRARY_PATH            $compiler/linux/lib
+prepend-path        LIBRARY_PATH            $compiler/linux/compiler/lib/intel64_lin
+prepend-path        LIBRARY_PATH            $daldir/lib/intel64
+prepend-path        LIBRARY_PATH            $dnnldir/lib
+prepend-path        LIBRARY_PATH            $ippcpdir/lib/intel64
+prepend-path        LIBRARY_PATH            $ippdir/lib/intel64
+prepend-path        LIBRARY_PATH            $mkldir/lib/intel64
+prepend-path        LIBRARY_PATH            $mpidir//lib
+prepend-path        LIBRARY_PATH            $mpidir//lib/release
+prepend-path        LIBRARY_PATH            $mpidir//libfabric/lib
+prepend-path        LIBRARY_PATH            $tbbdir/env/../lib/intel64/gcc4.8
+prepend-path        LIBRARY_PATH            $vpldir/lib
+prepend-path        LD_LIBRARY_PATH         $ccldir/lib/cpu_gpu_dpcpp
+prepend-path        LD_LIBRARY_PATH         $compiler/linux/compiler/lib/intel64_lin
+prepend-path        LD_LIBRARY_PATH         $compiler/linux/lib/oclfpga/host/linux64/lib
+prepend-path        LD_LIBRARY_PATH         $compiler/linux/lib/x64
+prepend-path        LD_LIBRARY_PATH         $compiler/linux/lib
+prepend-path        LD_LIBRARY_PATH         $daldir/lib/intel64
+prepend-path        LD_LIBRARY_PATH         $debugger/dep/lib
+prepend-path        LD_LIBRARY_PATH         $debugger/libipt/intel64/lib
+prepend-path        LD_LIBRARY_PATH         $debugger/gdb/intel64/lib
+prepend-path        LD_LIBRARY_PATH         $dnnldir/lib
+prepend-path        LD_LIBRARY_PATH         $ippcpdir/lib/intel64
+prepend-path        LD_LIBRARY_PATH         $ippdir/lib/intel64
+prepend-path        LD_LIBRARY_PATH         $itacdir/slib
+prepend-path        LD_LIBRARY_PATH         $mkldir/lib/intel64
+prepend-path        LD_LIBRARY_PATH         $mpidir//lib
+prepend-path        LD_LIBRARY_PATH         $mpidir//lib/release
+prepend-path        LD_LIBRARY_PATH         $mpidir//libfabric/lib
+prepend-path        LD_LIBRARY_PATH         $tbbdir/env/../lib/intel64/gcc4.8
+prepend-path        LD_LIBRARY_PATH         $vpldir/lib
+prepend-path        CPATH                   $ccldir/include/cpu_gpu_dpcpp
+prepend-path        CPATH                   $daldir/include
+prepend-path        CPATH                   $devutildir/include
+prepend-path        CPATH                   $dnnldir/include
+prepend-path        CPATH                   $dpcppctdir/include
+prepend-path        CPATH                   $dpldir/linux/include
+prepend-path        CPATH                   $ippcpdir/include
+prepend-path        CPATH                   $ippdir/include
+prepend-path        CPATH                   $mkldir/include
+prepend-path        CPATH                   $mpidir//include
+prepend-path        CPATH                   $tbbdir/env/../include
+prepend-path        CPATH                   $vpldir/include
+prepend-path        NLSPATH                 $compiler/linux/compiler/lib/intel64_lin/locale/%l_%t/%N
+prepend-path        NLSPATH                 $mkldir/lib/intel64/locale/%l_%t/%N
+prepend-path        PATH                    $advisordir/bin64
+prepend-path        PATH                    $clckdir/bin/intel64
+prepend-path        PATH                    $compiler/linux/bin
+prepend-path        PATH                    $compiler/linux/bin/intel64
+prepend-path        PATH                    $compiler/linux/lib/oclfpga/bin
+prepend-path        PATH                    $debugger/gdb/intel64/bin
+prepend-path        PATH                    $devutildir/bin
+prepend-path        PATH                    $dpcppctdir/bin
+prepend-path        PATH                    $inspectordir/bin64
+prepend-path        PATH                    $intelpythondir/condabin
+prepend-path        PATH                    $intelpythondir/bin
+prepend-path        PATH                    $itacdir/bin
+prepend-path        PATH                    $mkldir/bin/intel64
+prepend-path        PATH                    $mpidir//bin
+prepend-path        PATH                    $mpidir//libfabric/bin
+prepend-path        PATH                    $vpldir/bin
+prepend-path        PATH                    $vtunedir/bin64
+setenv              TBBROOT                 $tbbdir/env/..
+setenv              DAALROOT                $daldir
+setenv              DAL_MINOR_BINARY        1
+setenv              DAL_MAJOR_BINARY        1
+setenv              CLCK_ROOT               $clckdir
+setenv              CPLUS_INCLUDE_PATH      $clckdir/include
+setenv              VT_ROOT                 $itacdir
+setenv              VT_SLIB_DIR             $itacdir/slib
+setenv              DALROOT                 $daldir
+setenv              ONEAPI_ROOT             $intelhome
+setenv              DPCT_BUNDLE_ROOT        $dpcppctdir
+setenv              VTUNE_PROFILER_2022_DIR $vtunedir
+setenv              VTUNE_PROFILER_DIR      $vtunedir
+setenv              INTEL_PYTHONHOME        $debugger/dep
+setenv              PYTHONPATH              $advisordir/pythonapi
+setenv              CONDA_EXE               $intelpythondir/bin/conda
+setenv              CONDA_PREFIX            $intelpythondir
+setenv              CONDA_PROMPT_MODIFIER   (intelpython-python3.9)
+setenv              CONDA_DEFAULT_ENV       intelpython-python3.9
+setenv              CONDA_SHLVL             1
+setenv              CONDA_PYTHON_EXE        $intelpythondir/bin/python
+setenv              VT_MPI                  impi4
+setenv              ACL_BOARD_VENDOR_PATH   /opt/Intel/OpenCLFPGA/oneAPI/Boards
+setenv              FPGA_VARS_DIR           $compiler/linux/lib/oclfpga
+setenv              FPGA_VARS_ARGS          ""
+setenv              INTELFPGAOCLSDKROOT     $compiler/linux/lib/oclfpga
+setenv              IPPCP_TARGET_ARCH       intel64
+setenv              IPPCRYPTOROOT           $ippcpdir
+prepend-path        CLASSPATH               $daldir/lib/onedal.jar
+prepend-path        CLASSPATH               $mpidir//lib/mpi.jar
+setenv              INFOPATH                $debugger/gdb/intel64/lib
+setenv              CMPLR_ROOT              $compiler
+setenv              I_MPI_ROOT              $mpidir
+prepend-path        PKG_CONFIG_PATH         $advisordir/include/pkgconfig/lib64
+prepend-path        PKG_CONFIG_PATH         $ccldir/lib/pkgconfig
+prepend-path        PKG_CONFIG_PATH         $compiler/lib/pkgconfig
+prepend-path        PKG_CONFIG_PATH         $daldir/lib/pkgconfig
+prepend-path        PKG_CONFIG_PATH         $dnnldir/../lib/pkgconfig
+prepend-path        PKG_CONFIG_PATH         $dpldir/lib/pkgconfig
+prepend-path        PKG_CONFIG_PATH         $inspectordir/include/pkgconfig/lib64
+prepend-path        PKG_CONFIG_PATH         $ippcpdir/lib/pkgconfig
+prepend-path        PKG_CONFIG_PATH         $mkldir/lib/pkgconfig
+prepend-path        PKG_CONFIG_PATH         $mpidir/lib/pkgconfig
+prepend-path        PKG_CONFIG_PATH         $tbbdir/env/../lib/pkgconfig
+prepend-path        PKG_CONFIG_PATH         $vpldir/lib/pkgconfig
+prepend-path        PKG_CONFIG_PATH         $vtunedir/include/pkgconfig/lib64
+setenv              _CE_M                   ""
+setenv              _CE_CONDA               ""
+setenv              CCL_ROOT                $ccldir
+setenv              CCL_CONFIGURATION       cpu_gpu_dpcpp
+setenv              DPL_ROOT                $dpldir
+setenv              INSPECTOR_2022_DIR      $inspectordir
+setenv              GDB_INFO                $debugger/documentation/info/
+setenv              ADVISOR_2022_DIR        $advisordir
+setenv              SETVARS_COMPLETED       1
+setenv              APM                     $advisordir/perfmodels
+prepend-path        CMAKE_PREFIX_PATH       $compiler/linux/IntelDPCPP
+prepend-path        CMAKE_PREFIX_PATH       $daldir
+prepend-path        CMAKE_PREFIX_PATH       $dnnldir/../lib/cmake
+prepend-path        CMAKE_PREFIX_PATH       $tbbdir/env/..
+prepend-path        CMAKE_PREFIX_PATH       $vpldir
+prepend-path        FI_PROVIDER_PATH        /usr/lib64/libfabric
+prepend-path        FI_PROVIDER_PATH        $mpidir//libfabric/lib/prov
+setenv              DNNLROOT                $dnnldir
+prepend-path        DIAGUTIL_PATH           $advisordir/sys_check/advisor_sys_check.py
+prepend-path        DIAGUTIL_PATH           $compiler/sys_check/sys_check.sh
+prepend-path        DIAGUTIL_PATH           $debugger/sys_check/debugger_sys_check.py
+prepend-path        DIAGUTIL_PATH           $dpcppctdir/sys_check/sys_check.sh
+prepend-path        DIAGUTIL_PATH           $vtunedir/sys_check/vtune_sys_check.py
+prepend-path        OCL_ICD_FILENAMES       $compiler/linux/lib/x64/libintelocl.so
+prepend-path        OCL_ICD_FILENAMES       libalteracl.so
+prepend-path        OCL_ICD_FILENAMES       libintelocl_emu.so
+setenv              VT_LIB_DIR              $itacdir/lib
+prepend-path -d " " VT_ADD_LIBS             -lpthread
+prepend-path -d " " VT_ADD_LIBS             -lm
+prepend-path -d " " VT_ADD_LIBS             -lvtunwind
+prepend-path -d " " VT_ADD_LIBS             -lelf
+prepend-path -d " " VT_ADD_LIBS             -ldwarf
+
+if { [ module-info mode load ] } {
+    puts stderr "Loading Intel OneAPI tools into environment"
+}
+
+if { [ module-info mode remove ] } {
+    puts stderr "Removing Intel OneAPI from environment"
+}
