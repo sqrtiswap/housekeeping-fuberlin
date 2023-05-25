@@ -9,11 +9,11 @@ install: install-module
 
 install-module:
 	mkdir -p ~/.modules
-	cp -f module-ifort ~/.modules/ifort
+	cp -f module-intel-oneapi ~/.modules/intel-oneapi
 
 uninstall:
 	rm ~/bin/dir_cleanup
 	rm ~/bin/find_open
-	rm ~/.modules/ifort
+	rm ~/.modules/intel-oneapi
 
 .PHONY: all install install-module uninstall

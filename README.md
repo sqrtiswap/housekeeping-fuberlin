@@ -22,7 +22,7 @@ dir_cleanup /path/to/some/directory
 
 Another environment variable is `FUBOXDIR` which is used to shorten the path when running the script on the FUB Nextcloud. The assumed path is `$HOME/Cloud/fubox/`.
 
-### ifort module
+### Intel OneAPI module
 
 A [modulefile](https://modules.readthedocs.io/en/latest/modulefile.html) that allows to load/unload the Intel OneAPI tools, most importantly ifort.
 
@@ -46,7 +46,7 @@ In either case add the following line to your `~/.bashrc`:
 export MODULEPATH=$MODULEPATH:~/.modules
 ```
 
-This makes the ifort modulefile available for simple use with `module` `avail`/`load`/`unload`/`list`/etc.
+This makes the modulefile available for simple use with `module` `avail`/`load`/`unload`/`list`/etc.
 
 ## License
 [ISC](https://opensource.org/licenses/ISC)
