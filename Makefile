@@ -2,18 +2,18 @@
 
 all: install
 
-install: install-module
+install: install-modules
 	mkdir -p ~/bin/
 	cp -f dir_cleanup ~/bin/dir_cleanup
 	cp -f find_open ~/bin/find_open
 
-install-module:
-	mkdir -p ~/.modules
-	cp -f module-intel-oneapi ~/.modules/intel-oneapi
+install-modules:
+	mkdir -p ~/.modules/intel-oneapi
+	cp -f intel-oneapi/* ~/.modules/intel-oneapi/
 
 uninstall:
-	rm ~/bin/dir_cleanup
-	rm ~/bin/find_open
-	rm ~/.modules/intel-oneapi
+	rm -f ~/bin/dir_cleanup
+	rm -f ~/bin/find_open
+	rm -Rf ~/.modules/intel-oneapi
 
-.PHONY: all install install-module uninstall
+.PHONY: all install install-modules uninstall
