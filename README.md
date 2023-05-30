@@ -26,9 +26,9 @@ Another environment variable is `FUBOXDIR` which is used to shorten the path whe
 
 These are [modulefiles](https://modules.readthedocs.io/en/latest/modulefile.html) that allow to load/unload the Intel OneAPI tools, most importantly ifort.
 
-There are two versions: `full` and `no-python`:
+There are two versions: `full` and `no-python`.
 - The former is equivalent to sourcing the setup script in `/net/opt/intel-oneapi/setvars.sh` with the added benefit of allowing easy unload.
-- The latter exludes the `intelpython` setup which is a python and conda setup maintained by the Intel Corporation. Since it might interfere with your own python/conda setup this is a way to just use the non-python parts of Intel OneAPI.
+- The latter excludes the `intelpython` setup which is a python and conda setup maintained by the Intel Corporation. Since it might interfere with your own python/conda setup this is a way to just use the non-python parts of Intel OneAPI.
 
 ## Setup/Install
 
