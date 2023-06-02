@@ -25,6 +25,7 @@ Another environment variable is `FUBOXDIR` which is used to shorten the path whe
 ### Intel OneAPI modules
 
 These are [modulefiles](https://modules.readthedocs.io/en/latest/modulefile.html) that allow to load/unload the Intel OneAPI tools, most importantly ifort.
+Intel provides a collection of [modulefiles](https://www.intel.com/content/www/us/en/docs/oneapi/programming-guide/2023-0/use-modulefiles-with-linux.html) themselves. They however only work for the individual tools that make up OneAPI. So unless you need/want to fine-tune your environment and only use parts of OneAPI, the modulefiles in this repo should work as a one-size-fits-most solution.
 
 There are two versions: `full` and `no-python`.
 - The former is equivalent to sourcing the setup script in `/net/opt/intel-oneapi/setvars.sh` with the added benefit of allowing easy unload.
