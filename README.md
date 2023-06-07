@@ -41,6 +41,8 @@ make
 
 If you are just interested in the modulefiles:
 
+As of 2023-05-30 the modulefiles are now installed department-wide. So unless any changes to these modulefiles become necessary _**and**_ these changes don't end up in the ZEDV maintained directory, you can skip the following.
+
 ```shell
 make install-modules
 ```
@@ -48,7 +50,7 @@ make install-modules
 In either case add the following line to your `~/.bashrc`:
 
 ```shell
-export MODULEPATH=$MODULEPATH:~/.modules
+export MODULEPATH=~/.modules:$MODULEPATH
 ```
 
 This makes the modulefiles available for simple use with `module` `avail`/`load`/`unload`/`list`/etc.
