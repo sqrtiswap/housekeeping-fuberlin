@@ -41,7 +41,11 @@ make
 
 If you are just interested in the modulefiles:
 
-As of 2023-05-30 the modulefiles are now installed department-wide. So unless any changes to these modulefiles become necessary _**and**_ these changes don't end up in the ZEDV maintained directory, you can skip the following.
+**As of 2023-05-30 the modulefiles are now installed on workstations department-wide.**
+
+**As of 2023-07-07 the modulefiles are now also available on the clusters `tron` and `sheldon`.**
+
+**So unless any changes to these modulefiles become necessary *and* these changes don't end up in the ZEDV maintained directory, you can skip the following.**
 
 ```shell
 make install-modules
